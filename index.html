@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legendary AI | Boutique AI Consulting Partner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        ai: {
+                            dark: '#0B0C15',
+                            card: '#151725',
+                            accent: '#6366f1', // Indigo
+                            glow: '#818cf8',
+                            text: '#cbd5e1'
+                        }
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.15) 0%, rgba(11, 12, 21, 0) 50%)",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0B0C15;
+            color: white;
+        }
+        .glass-nav {
+            background: rgba(11, 12, 21, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .service-card {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #6366f1;
+            box-shadow: 0 10px 40px -10px rgba(99, 102, 241, 0.2);
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #ffffff, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.4;
+        }
+        /* Reveal on Scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Swarm Animation */
+        .swarm-dot {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background-color: #6366f1;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: swarmMove 3s infinite ease-in-out;
+        }
+        @keyframes swarmMove {
+            0% { transform: translate(0, 0); opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { transform: translate(100px, -20px); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 font-display font-bold text-2xl tracking-tighter">
+                    LEGENDARY<span class="text-indigo-500">.</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#about" class="hover:text-indigo-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Philosophy</a>
+                        <a href="#services" class="hover:text-indigo-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Offerings</a>
+                        <a href="#vibe" class="hover:text-indigo-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Talent</a>
+                        <a href="#contact" class="bg-indigo-600 hover:bg-indigo-700 transition-colors text-white px-5 py-2 rounded-full text-sm font-medium ml-4">Book Consultation</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-ai-card border-b border-gray-800" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-800">Philosophy</a>
+                <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-800">Offerings</a>
+                <a href="#vibe" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-800">Talent</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400">Book Consultation</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <!-- Background Blobs -->
+        <div class="blob bg-indigo-600 w-96 h-96 rounded-full top-0 left-0 -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="blob bg-purple-600 w-96 h-96 rounded-full bottom-0 right-0 translate-x-1/3 translate-y-1/3"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="inline-flex items-center px-4 py-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 text-sm font-medium mb-8 reveal">
+                <span class="flex h-2 w-2 rounded-full bg-indigo-400 mr-2 animate-pulse"></span>
+                The Future is Agentic
+            </div>
+            <h1 class="text-5xl md:text-7xl font-display font-bold tracking-tight mb-8 reveal" style="transition-delay: 100ms;">
+                Your Boutique <br />
+                <span class="gradient-text">AI Consulting Partner</span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-ai-text reveal" style="transition-delay: 200ms;">
+                We don't just add AI to your business. We redesign your business for the Agentic Era. 
+                From autonomous systems to workforce modernization.
+            </p>
+            <div class="mt-10 flex justify-center gap-4 reveal" style="transition-delay: 300ms;">
+                <a href="#services" class="px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg transition-all shadow-lg shadow-indigo-500/25">
+                    Explore Offerings
+                </a>
+                <a href="#contact" class="px-8 py-3 border border-gray-700 text-base font-medium rounded-full text-gray-300 hover:bg-gray-800 md:py-4 md:text-lg transition-all">
+                    Get in Touch
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offerings Grid -->
+    <section id="services" class="py-24 bg-ai-card/30 relative border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">Our Core Offerings</h2>
+                <p class="text-ai-text max-w-2xl mx-auto">Strategic transformation. Intelligent execution. Responsible scaling.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- 1. Custom AI Project Delivery -->
+                <div class="service-card bg-ai-card p-8 rounded-2xl reveal">
+                    <div class="w-12 h-12 bg-indigo-900/50 rounded-lg flex items-center justify-center mb-6 text-indigo-400">
+                        <i class="fas fa-code-branch text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 font-display">Custom AI Project Delivery</h3>
+                    <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                        End-to-end development of bespoke AI solutions that reason, plan, and execute.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start text-sm text-gray-300">
+                            <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                            <span><strong>Agentic Applications:</strong> Autonomous systems for complex workflows (Research, Ops, Fraud).</span>
+                        </li>
+                        <li class="flex items-start text-sm text-gray-300">
+                            <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                            <span><strong>Conversational Apps:</strong> RAG-powered assistants and advanced customer support interfaces.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 2. Agentic Business Modernization -->
+                <div class="service-card bg-ai-card p-8 rounded-2xl reveal" style="transition-delay: 100ms;">
+                    <div class="w-12 h-12 bg-indigo-900/50 rounded-lg flex items-center justify-center mb-6 text-indigo-400">
+                        <i class="fas fa-building text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 font-display">Agentic Business Modernization</h3>
+                    <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                        Rethinking operations for an AI-native world. Not just automation, but transformation.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start text-sm text-gray-300">
+                            <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                            <span><strong>Process Reengineering:</strong> Redesign workflows to be agent-first.</span>
+                        </li>
+                        <li class="flex items-start text-sm text-gray-300">
+                            <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                            <span><strong>Shed & Shift Analysis:</strong> Workforce planning to automate tasks (Shed) and elevate humans (Shift).</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 3. Agentic Technology Transformation -->
+                <div class="service-card bg-ai-card p-8 rounded-2xl reveal" style="transition-delay: 200ms;">
+                    <div class="w-12 h-12 bg-indigo-900/50 rounded-lg flex items-center justify-center mb-6 text-indigo-400">
+                        <i class="fas fa-microchip text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 font-display">Agentic Tech Transformation</h3>
+                    <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                        Building the internal capability and infrastructure to sustain AI adoption.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start text-sm text-gray-300">
+                            <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                            <span><strong>Adopt Agentic Coding:</strong> Upskilling engineering teams on LLMs and agent frameworks.</span>
+                        </li>
+                        <li class="flex items-start text-sm text-gray-300">
+                            <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                            <span><strong>HAP Analysis:</strong> Optimizing Human-Agent Pair collaboration patterns.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 4. Elastic Vibe Engineers -->
+                <div id="vibe" class="service-card bg-gradient-to-br from-indigo-900/20 to-ai-card p-8 rounded-2xl reveal border-indigo-500/30">
+                    <div class="w-12 h-12 bg-indigo-500 rounded-lg flex items-center justify-center mb-6 text-white shadow-lg shadow-indigo-500/40">
+                        <i class="fas fa-bolt text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 font-display text-white">Elastic Vibe Engineers</h3>
+                    <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                        Need speed? Plug in our high-energy, specialized talent immediately.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start text-sm text-gray-300">
+                            <i class="fas fa-check text-indigo-400 mt-1 mr-2"></i>
+                            <span><strong>On-Demand Talent:</strong> Access to vetted AI-native engineers and prompt architects.</span>
+                        </li>
+                        <li class="flex items-start text-sm text-gray-300">
+                            <i class="fas fa-check text-indigo-400 mt-1 mr-2"></i>
+                            <span><strong>Rapid Prototyping:</strong> Scale your team up or down instantly based on project needs.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 5. AI Governance & Trust (New) -->
+                <div class="service-card bg-ai-card p-8 rounded-2xl reveal md:col-span-2 lg:col-span-2 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl group-hover:bg-indigo-500/20 transition-all"></div>
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 bg-indigo-900/50 rounded-lg flex items-center justify-center text-indigo-400">
+                                <i class="fas fa-shield-alt text-xl"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-3 font-display">AI Governance & Trust Architecture</h3>
+                            <p class="text-gray-400 text-sm mb-4 leading-relaxed max-w-lg">
+                                The missing link in AI adoption. We ensure your systems are safe, compliant, and trustworthy.
+                            </p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <ul class="space-y-2">
+                                    <li class="flex items-start text-sm text-gray-300">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span><strong>Guardrails Engineering:</strong> Safety boundaries for autonomous agents.</span>
+                                    </li>
+                                    <li class="flex items-start text-sm text-gray-300">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span><strong>Observability:</strong> Monitoring drift and decision quality.</span>
+                                    </li>
+                                </ul>
+                                <ul class="space-y-2">
+                                    <li class="flex items-start text-sm text-gray-300">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span><strong>Compliance:</strong> Audit frameworks for EU AI Act & internal policy.</span>
+                                    </li>
+                                    <li class="flex items-start text-sm text-gray-300">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span><strong>Trust Calibration:</strong> Stakeholder expectation management.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Shift Left, Swarm Right Section (NEW) -->
+    <section class="py-24 bg-gradient-to-b from-ai-card via-ai-dark to-ai-dark relative overflow-hidden">
+        <!-- Decoration -->
+        <div class="absolute inset-0 bg-hero-pattern opacity-50"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                
+                <!-- Text Content -->
+                <div class="reveal">
+                    <h2 class="text-5xl md:text-7xl font-display font-bold leading-none mb-6">
+                        Shift Left.<br/>
+                        <span class="text-indigo-500">Swarm Right.</span>
+                    </h2>
+                    <h3 class="text-2xl text-white font-medium mb-8 font-display">
+                        Empower Owners, Automate Everything.
+                    </h3>
+                    <p class="text-gray-400 text-lg mb-8 leading-relaxed mx-auto max-w-2xl">
+                        We are the <span class="text-indigo-300 font-bold">anti-consultant</span>. No more waterfall woes or engineer bottlenecks. 
+                        We turn Product Owners into maestros who conduct AI-orchestrated symphonies. 
+                        Move from idea to deployment through vibe-driven ideation flowing seamlessly into production.
+                    </p>
+                    
+                    <!-- Metrics -->
+                    <div class="grid grid-cols-3 gap-6 pt-4 max-w-2xl mx-auto">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-white font-display">70%</div>
+                            <div class="text-xs text-indigo-400 uppercase tracking-wider mt-1">Cycle Time Cut</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-white font-display">10x</div>
+                            <div class="text-xs text-indigo-400 uppercase tracking-wider mt-1">Prototyping Speed</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-white font-display">ROI</div>
+                            <div class="text-xs text-indigo-400 uppercase tracking-wider mt-1">Comprehensive</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- From Napkin to Production Section (NEW) -->
+    <section class="py-24 bg-ai-card relative border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-display font-bold mb-6">From Napkin to Production</h2>
+                <p class="text-gray-400 text-lg max-w-3xl mx-auto">
+                    Our methodology replaces the <span class="text-indigo-400 line-through decoration-2">waterfall of doom</span> with a continuous stream of value. 
+                    We leverage "Vibe Coding" where intuition drives the spec, and agents drive the syntax.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Step 01 -->
+                <div class="p-6 rounded-2xl bg-indigo-900/10 border border-indigo-500/20 reveal hover:bg-indigo-900/20 transition-all hover:-translate-y-1">
+                    <div class="text-5xl font-display font-bold text-indigo-500/20 mb-4">01</div>
+                    <h3 class="text-xl font-bold text-white mb-3">Vibe & Ideate</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Business users describe the desired outcome using natural language and low-fidelity sketches. No PRDs, just intent.
+                    </p>
+                </div>
+
+                <!-- Step 02 -->
+                <div class="p-6 rounded-2xl bg-indigo-900/10 border border-indigo-500/20 reveal hover:bg-indigo-900/20 transition-all hover:-translate-y-1" style="transition-delay: 100ms;">
+                    <div class="text-5xl font-display font-bold text-indigo-500/20 mb-4">02</div>
+                    <h3 class="text-xl font-bold text-white mb-3">Spec Driven Development</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        The new method for iteratively prompting applications. We convert 'vibes' into rigorous specs and architecture definitions automatically.
+                    </p>
+                </div>
+
+                <!-- Step 03 -->
+                <div class="p-6 rounded-2xl bg-indigo-900/10 border border-indigo-500/20 reveal hover:bg-indigo-900/20 transition-all hover:-translate-y-1" style="transition-delay: 200ms;">
+                    <div class="text-5xl font-display font-bold text-indigo-500/20 mb-4">03</div>
+                    <h3 class="text-xl font-bold text-white mb-3">Agentic Dev Team</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Fleets of specialized agents (Frontend, Backend, QA, Security) instantiate to build the codebase in parallel.
+                    </p>
+                </div>
+
+                <!-- Step 04 -->
+                <div class="p-6 rounded-2xl bg-indigo-900/10 border border-indigo-500/20 reveal hover:bg-indigo-900/20 transition-all hover:-translate-y-1" style="transition-delay: 300ms;">
+                    <div class="text-5xl font-display font-bold text-indigo-500/20 mb-4">04</div>
+                    <h3 class="text-xl font-bold text-white mb-3">Shared Agentic Layers</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Agents automatically wire apps into shared services (Gateways, Identity) and adhere to Data Governance policies, ensuring compliance by design.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology / Philosophy -->
+    <section id="about" class="py-20 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-indigo-900/20 border border-indigo-500/20 rounded-3xl p-8 md:p-12 text-center reveal">
+                <h2 class="text-3xl font-display font-bold mb-6">The "Shed & Shift" Philosophy</h2>
+                <p class="text-lg text-gray-300 max-w-3xl mx-auto mb-8">
+                    We don't believe in replacing humans. We believe in liberating them. Our unique 
+                    <span class="text-indigo-400 font-bold">Shed & Shift</span> methodology analyzes your workforce to identify tasks to 
+                    <span class="text-white italic">shed</span> to agents, so your people can <span class="text-white italic">shift</span> 
+                    to higher-value, creative, and strategic work.
+                </p>
+                <div class="flex justify-center gap-8 text-sm font-bold tracking-widest text-indigo-300 uppercase">
+                    <div><i class="fas fa-arrow-down mb-2 block"></i>Shed Routine</div>
+                    <div><i class="fas fa-arrow-up mb-2 block"></i>Shift Value</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="bg-ai-dark border-t border-gray-800 pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+                <div>
+                    <div class="font-display font-bold text-2xl tracking-tighter mb-6">
+                        LEGENDARY<span class="text-indigo-500">.</span>
+                    </div>
+                    <p class="text-gray-400 mb-6 max-w-sm">
+                        Your partner for the Agentic Era. Let's build the future of your business operations together.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-linkedin text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-github text-xl"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6">Get in Touch</h4>
+                    <form onsubmit="event.preventDefault(); alert('Thank you for your interest! We will be in touch shortly.');" class="space-y-4">
+                        <input type="email" placeholder="Enter your email" class="w-full bg-ai-card border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-indigo-500 transition-colors">
+                        <textarea placeholder="Tell us about your project" rows="3" class="w-full bg-ai-card border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-indigo-500 transition-colors"></textarea>
+                        <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-lg transition-colors w-full md:w-auto">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+                &copy; 2024 Legendary AI Consulting. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Intersection Observer for scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach((el) => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
