@@ -74,22 +74,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Swarm Animation */
-        .swarm-dot {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background-color: #6366f1;
-            border-radius: 50%;
-            opacity: 0.7;
-            animation: swarmMove 3s infinite ease-in-out;
-        }
-        @keyframes swarmMove {
-            0% { transform: translate(0, 0); opacity: 0; }
-            20% { opacity: 1; }
-            80% { opacity: 1; }
-            100% { transform: translate(100px, -20px); opacity: 0; }
-        }
     </style>
 </head>
 <body class="antialiased selection:bg-indigo-500 selection:text-white">
@@ -98,7 +82,7 @@
     <nav class="fixed w-full z-50 glass-nav">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <div class="flex-shrink-0 font-display font-bold text-2xl tracking-tighter">
+                <div class="flex-shrink-0 font-display font-bold text-2xl tracking-tighter cursor-pointer" onclick="window.scrollTo(0,0)">
                     LEGENDARY<span class="text-indigo-500">.</span>
                 </div>
                 <div class="hidden md:block">
@@ -157,6 +141,25 @@
         </div>
     </section>
 
+    <!-- Value Prop Section -->
+    <section class="py-24 relative overflow-hidden border-t border-gray-800 bg-ai-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-4xl mx-auto text-center reveal">
+                <h2 class="text-4xl md:text-5xl font-display font-bold mb-6 leading-tight">
+                    Your stakeholders have seen the <span class="text-indigo-500">future</span>.
+                    <br/>They won't wait for the past.
+                </h2>
+                <p class="text-gray-400 text-lg mb-8 leading-relaxed max-w-2xl mx-auto">
+                    The AI revolution reset expectations. Leadership demands magic, but legacy cycles can't keep up. We close the gap between <em>possible</em> and <em>shipped</em>—building engines of velocity, not roadmaps to nowhere.
+                </p>
+                <div class="flex items-center justify-center space-x-4 text-indigo-400 font-medium">
+                    <i class="fas fa-bolt"></i>
+                    <span>Deploy in weeks, not years.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Offerings Grid -->
     <section id="services" class="py-24 bg-ai-card/30 relative border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -165,133 +168,152 @@
                 <p class="text-ai-text max-w-2xl mx-auto">Strategic transformation. Intelligent execution. Responsible scaling.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <!-- 1. Custom AI Project Delivery -->
-                <div class="service-card bg-ai-card p-8 rounded-2xl reveal">
-                    <div class="w-12 h-12 bg-indigo-900/50 rounded-lg flex items-center justify-center mb-6 text-indigo-400">
-                        <i class="fas fa-code-branch text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 font-display">Custom AI Project Delivery</h3>
-                    <p class="text-gray-400 text-sm mb-4 leading-relaxed">
-                        End-to-end development of bespoke AI solutions that reason, plan, and execute.
-                    </p>
-                    <ul class="space-y-2">
-                        <li class="flex items-start text-sm text-gray-300">
-                            <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
-                            <span><strong>Agentic Applications:</strong> Autonomous systems for complex workflows (Research, Ops, Fraud).</span>
-                        </li>
-                        <li class="flex items-start text-sm text-gray-300">
-                            <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
-                            <span><strong>Conversational Apps:</strong> RAG-powered assistants and advanced customer support interfaces.</span>
-                        </li>
-                    </ul>
+            <!-- Category: Businesses That Can't Wait -->
+            <div class="mb-20">
+                <div class="flex items-center gap-4 mb-10 reveal">
+                    <div class="h-px bg-gray-800 flex-1"></div>
+                    <span class="text-indigo-400 font-mono text-sm uppercase tracking-wider font-bold">For Businesses That Can't Wait</span>
+                    <div class="h-px bg-gray-800 flex-1"></div>
                 </div>
 
-                <!-- 2. Agentic Business Modernization -->
-                <div class="service-card bg-ai-card p-8 rounded-2xl reveal" style="transition-delay: 100ms;">
-                    <div class="w-12 h-12 bg-indigo-900/50 rounded-lg flex items-center justify-center mb-6 text-indigo-400">
-                        <i class="fas fa-building text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 font-display">Agentic Business Modernization</h3>
-                    <p class="text-gray-400 text-sm mb-4 leading-relaxed">
-                        Rethinking operations for an AI-native world. Not just automation, but transformation.
-                    </p>
-                    <ul class="space-y-2">
-                        <li class="flex items-start text-sm text-gray-300">
-                            <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
-                            <span><strong>Process Reengineering:</strong> Redesign workflows to be agent-first.</span>
-                        </li>
-                        <li class="flex items-start text-sm text-gray-300">
-                            <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
-                            <span><strong>Shed & Shift Analysis:</strong> Workforce planning to automate tasks (Shed) and elevate humans (Shift).</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- 3. Agentic Technology Transformation -->
-                <div class="service-card bg-ai-card p-8 rounded-2xl reveal" style="transition-delay: 200ms;">
-                    <div class="w-12 h-12 bg-indigo-900/50 rounded-lg flex items-center justify-center mb-6 text-indigo-400">
-                        <i class="fas fa-microchip text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 font-display">Agentic Tech Transformation</h3>
-                    <p class="text-gray-400 text-sm mb-4 leading-relaxed">
-                        Building the internal capability and infrastructure to sustain AI adoption.
-                    </p>
-                    <ul class="space-y-2">
-                        <li class="flex items-start text-sm text-gray-300">
-                            <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
-                            <span><strong>Adopt Agentic Coding:</strong> Upskilling engineering teams on LLMs and agent frameworks.</span>
-                        </li>
-                        <li class="flex items-start text-sm text-gray-300">
-                            <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
-                            <span><strong>HAP Analysis:</strong> Optimizing Human-Agent Pair collaboration patterns.</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- 4. Elastic Vibe Engineers -->
-                <div id="vibe" class="service-card bg-gradient-to-br from-indigo-900/20 to-ai-card p-8 rounded-2xl reveal border-indigo-500/30">
-                    <div class="w-12 h-12 bg-indigo-500 rounded-lg flex items-center justify-center mb-6 text-white shadow-lg shadow-indigo-500/40">
-                        <i class="fas fa-bolt text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 font-display text-white">Elastic Vibe Engineers</h3>
-                    <p class="text-gray-400 text-sm mb-4 leading-relaxed">
-                        Need speed? Plug in our high-energy, specialized talent immediately.
-                    </p>
-                    <ul class="space-y-2">
-                        <li class="flex items-start text-sm text-gray-300">
-                            <i class="fas fa-check text-indigo-400 mt-1 mr-2"></i>
-                            <span><strong>On-Demand Talent:</strong> Access to vetted AI-native engineers and prompt architects.</span>
-                        </li>
-                        <li class="flex items-start text-sm text-gray-300">
-                            <i class="fas fa-check text-indigo-400 mt-1 mr-2"></i>
-                            <span><strong>Rapid Prototyping:</strong> Scale your team up or down instantly based on project needs.</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- 5. AI Governance & Trust (New) -->
-                <div class="service-card bg-ai-card p-8 rounded-2xl reveal md:col-span-2 lg:col-span-2 relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl group-hover:bg-indigo-500/20 transition-all"></div>
-                    <div class="flex flex-col md:flex-row gap-6">
-                        <div class="flex-shrink-0">
-                            <div class="w-12 h-12 bg-indigo-900/50 rounded-lg flex items-center justify-center text-indigo-400">
-                                <i class="fas fa-shield-alt text-xl"></i>
-                            </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- 1. Elastic Vibe Engineers -->
+                    <div id="vibe" class="service-card bg-gradient-to-br from-indigo-900/20 to-ai-card p-8 rounded-2xl reveal border-indigo-500/30">
+                        <div class="w-12 h-12 bg-indigo-500 rounded-lg flex items-center justify-center mb-6 text-white shadow-lg shadow-indigo-500/40">
+                            <i class="fas fa-bolt text-xl"></i>
                         </div>
-                        <div>
-                            <h3 class="text-xl font-bold mb-3 font-display">AI Governance & Trust Architecture</h3>
-                            <p class="text-gray-400 text-sm mb-4 leading-relaxed max-w-lg">
-                                The missing link in AI adoption. We ensure your systems are safe, compliant, and trustworthy.
-                            </p>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <ul class="space-y-2">
-                                    <li class="flex items-start text-sm text-gray-300">
-                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
-                                        <span><strong>Guardrails Engineering:</strong> Safety boundaries for autonomous agents.</span>
-                                    </li>
-                                    <li class="flex items-start text-sm text-gray-300">
-                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
-                                        <span><strong>Observability:</strong> Monitoring drift and decision quality.</span>
-                                    </li>
-                                </ul>
-                                <ul class="space-y-2">
-                                    <li class="flex items-start text-sm text-gray-300">
-                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
-                                        <span><strong>Compliance:</strong> Audit frameworks for EU AI Act & internal policy.</span>
-                                    </li>
-                                    <li class="flex items-start text-sm text-gray-300">
-                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
-                                        <span><strong>Trust Calibration:</strong> Stakeholder expectation management.</span>
-                                    </li>
-                                </ul>
-                            </div>
+                        <h3 class="text-xl font-bold mb-3 font-display text-white">Elastic Vibe Engineers</h3>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                            Need speed? Plug in our high-energy, specialized talent immediately.
+                        </p>
+                        <ul class="space-y-2">
+                            <li class="flex items-start text-sm text-gray-300">
+                                <i class="fas fa-check text-indigo-400 mt-1 mr-2"></i>
+                                <span><strong>On-Demand Talent:</strong> Access to vetted AI-native engineers and prompt architects.</span>
+                            </li>
+                            <li class="flex items-start text-sm text-gray-300">
+                                <i class="fas fa-check text-indigo-400 mt-1 mr-2"></i>
+                                <span><strong>Shadow IT Hardening:</strong> We refactor and productionize the solutions your business teams built on the side.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 2. Custom AI Project Delivery -->
+                    <div class="service-card bg-ai-card p-8 rounded-2xl reveal" style="transition-delay: 100ms;">
+                        <div class="w-12 h-12 bg-indigo-900/50 rounded-lg flex items-center justify-center mb-6 text-indigo-400">
+                            <i class="fas fa-code-branch text-xl"></i>
                         </div>
+                        <h3 class="text-xl font-bold mb-3 font-display">Custom AI Solutions</h3>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                            End-to-end development of bespoke AI solutions that reason, plan, and execute.
+                        </p>
+                        <ul class="space-y-2">
+                            <li class="flex items-start text-sm text-gray-300">
+                                <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                <span><strong>Agentic Applications:</strong> Autonomous systems for complex workflows.</span>
+                            </li>
+                            <li class="flex items-start text-sm text-gray-300">
+                                <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                <span><strong>Conversational Apps:</strong> RAG-powered assistants and support interfaces.</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-
             </div>
+
+            <!-- Category: I.T. and Transformation Teams -->
+            <div>
+                <div class="flex items-center gap-4 mb-10 reveal">
+                    <div class="h-px bg-gray-800 flex-1"></div>
+                    <span class="text-indigo-400 font-mono text-sm uppercase tracking-wider font-bold">For I.T. and Transformation Teams</span>
+                    <div class="h-px bg-gray-800 flex-1"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- 1. Agentic Tech Transformation -->
+                    <div class="service-card bg-ai-card p-8 rounded-2xl reveal">
+                        <div class="w-12 h-12 bg-indigo-900/50 rounded-lg flex items-center justify-center mb-6 text-indigo-400">
+                            <i class="fas fa-microchip text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 font-display">Agentic Tech Transformation</h3>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                            Building the internal capability and infrastructure to sustain AI adoption.
+                        </p>
+                        <ul class="space-y-2">
+                            <li class="flex items-start text-sm text-gray-300">
+                                <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                <span><strong>Adopt Agentic Coding:</strong> Upskilling engineering teams on LLMs and frameworks.</span>
+                            </li>
+                            <li class="flex items-start text-sm text-gray-300">
+                                <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                <span><strong>HAP Analysis:</strong> Optimizing Human-Agent Pair collaboration patterns.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 2. Agentic Business Modernization (Moved Here) -->
+                    <div class="service-card bg-ai-card p-8 rounded-2xl reveal" style="transition-delay: 100ms;">
+                        <div class="w-12 h-12 bg-indigo-900/50 rounded-lg flex items-center justify-center mb-6 text-indigo-400">
+                            <i class="fas fa-building text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 font-display">Business Modernization</h3>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                            Rethinking operations for an AI-native world. Not just automation, but transformation.
+                        </p>
+                        <ul class="space-y-2">
+                            <li class="flex items-start text-sm text-gray-300">
+                                <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                <span><strong>Process Reengineering:</strong> Redesign workflows to be agent-first.</span>
+                            </li>
+                            <li class="flex items-start text-sm text-gray-300">
+                                <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                <span><strong>Shed & Shift Analysis:</strong> Workforce planning to automate tasks and elevate humans.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 3. AI Governance & Trust -->
+                    <div class="service-card bg-ai-card p-8 rounded-2xl reveal relative overflow-hidden group" style="transition-delay: 200ms;">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl group-hover:bg-indigo-500/20 transition-all"></div>
+                        <div class="flex flex-col gap-6">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-indigo-900/50 rounded-lg flex items-center justify-center text-indigo-400">
+                                    <i class="fas fa-shield-alt text-xl"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-3 font-display">AI Governance & Trust Architecture</h3>
+                                <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                                    The missing link in AI adoption. We ensure your systems are safe, compliant, and trustworthy.
+                                </p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <ul class="space-y-2">
+                                        <li class="flex items-start text-sm text-gray-300">
+                                            <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                            <span><strong>Guardrails:</strong> Safety boundaries for agents.</span>
+                                        </li>
+                                        <li class="flex items-start text-sm text-gray-300">
+                                            <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                            <span><strong>Observability:</strong> Monitoring drift & quality.</span>
+                                        </li>
+                                    </ul>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-start text-sm text-gray-300">
+                                            <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                            <span><strong>Compliance:</strong> Audit frameworks.</span>
+                                        </li>
+                                        <li class="flex items-start text-sm text-gray-300">
+                                            <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                            <span><strong>Trust:</strong> Expectation mgmt.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -428,12 +450,15 @@
                 </div>
                 <div>
                     <h4 class="text-white font-bold mb-6">Get in Touch</h4>
-                    <form onsubmit="event.preventDefault(); alert('Thank you for your interest! We will be in touch shortly.');" class="space-y-4">
-                        <input type="email" placeholder="Enter your email" class="w-full bg-ai-card border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-indigo-500 transition-colors">
-                        <textarea placeholder="Tell us about your project" rows="3" class="w-full bg-ai-card border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-indigo-500 transition-colors"></textarea>
+                    <form id="contactForm" class="space-y-4">
+                        <input type="email" required placeholder="Enter your email" class="w-full bg-ai-card border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-indigo-500 transition-colors">
+                        <textarea required placeholder="Tell us about your project" rows="3" class="w-full bg-ai-card border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-indigo-500 transition-colors"></textarea>
                         <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-lg transition-colors w-full md:w-auto">
                             Send Message
                         </button>
+                        <div id="successMessage" class="hidden text-green-400 text-sm mt-2">
+                            <i class="fas fa-check-circle mr-2"></i> Thank you! We'll be in touch shortly.
+                        </div>
                     </form>
                 </div>
             </div>
@@ -461,6 +486,19 @@
 
         document.querySelectorAll('.reveal').forEach((el) => {
             observer.observe(el);
+        });
+
+        // Form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const successMsg = document.getElementById('successMessage');
+            successMsg.classList.remove('hidden');
+            e.target.reset();
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                successMsg.classList.add('hidden');
+            }, 5000);
         });
     </script>
 </body>
