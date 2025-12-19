@@ -75,6 +75,9 @@
             opacity: 1;
             transform: translateY(0);
         }
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-indigo-500 selection:text-white">
@@ -88,6 +91,18 @@
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
+                        <div class="relative dropdown">
+                            <button class="text-gray-300 hover:text-white transition-colors text-sm font-medium flex items-center gap-1">
+                                Offerings <i class="fas fa-chevron-down text-xs"></i>
+                            </button>
+                            <div class="dropdown-menu hidden absolute left-0 mt-2 w-64 bg-ai-card border border-gray-700 rounded-lg shadow-xl py-2">
+                                <a href="design-target-state.html" class="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-700/50">Design the Target State</a>
+                                <a href="build-velocity-engine.html" class="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-700/50">Build Your Velocity Engine</a>
+                                <a href="establish-governance.html" class="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-700/50">Establish Governance</a>
+                                <a href="navigate-human-journey.html" class="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-700/50">Navigate the Human Journey</a>
+                            </div>
+                        </div>
+                        <a href="methodology.html" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Methodology</a>
                         <a href="#contact" class="bg-indigo-600 hover:bg-indigo-700 transition-colors text-white px-5 py-2 rounded-full text-sm font-medium ml-4">Book Consultation</a>
                     </div>
                 </div>
@@ -101,6 +116,13 @@
         <!-- Mobile Menu -->
         <div class="hidden md:hidden bg-ai-card border-b border-gray-800" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <div class="px-3 py-2 text-xs uppercase text-gray-500 font-medium">Offerings</div>
+                <a href="design-target-state.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300">Design the Target State</a>
+                <a href="build-velocity-engine.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300">Build Your Velocity Engine</a>
+                <a href="establish-governance.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300">Establish Governance</a>
+                <a href="navigate-human-journey.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300">Navigate the Human Journey</a>
+                <div class="border-t border-gray-700 my-2"></div>
+                <a href="methodology.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300">Methodology</a>
                 <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400">Book Consultation</a>
             </div>
         </div>
@@ -231,9 +253,12 @@
                         <div class="text-6xl font-display font-bold text-indigo-500/30">1</div>
                         <div>
                             <h3 class="text-2xl font-bold mb-3 font-display">Design the Target State</h3>
-                            <p class="text-gray-400 text-lg leading-relaxed">
+                            <p class="text-gray-400 text-lg leading-relaxed mb-4">
                                 We assess your current state, define the agentic operating model, and build the roadmap—reshaping culture, processes, and technology to achieve velocity at scale.
                             </p>
+                            <a href="design-target-state.html" class="text-indigo-400 hover:text-indigo-300 text-sm font-medium inline-flex items-center gap-1 transition-colors">
+                                Learn More <i class="fas fa-arrow-right text-xs"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -244,9 +269,12 @@
                         <div class="text-6xl font-display font-bold text-indigo-500/30">2</div>
                         <div>
                             <h3 class="text-2xl font-bold mb-3 font-display">Build Your Velocity Engine</h3>
-                            <p class="text-gray-400 text-lg leading-relaxed">
+                            <p class="text-gray-400 text-lg leading-relaxed mb-4">
                                 We stand up your Agentic Services Group: secure platforms, pre-approved models, agent catalogs, knowledge foundations, and the shared infrastructure that prevents bottlenecks.
                             </p>
+                            <a href="build-velocity-engine.html" class="text-indigo-400 hover:text-indigo-300 text-sm font-medium inline-flex items-center gap-1 transition-colors">
+                                Learn More <i class="fas fa-arrow-right text-xs"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -257,9 +285,12 @@
                         <div class="text-6xl font-display font-bold text-indigo-500/30">3</div>
                         <div>
                             <h3 class="text-2xl font-bold mb-3 font-display">Establish Governance</h3>
-                            <p class="text-gray-400 text-lg leading-relaxed">
+                            <p class="text-gray-400 text-lg leading-relaxed mb-4">
                                 Design the guardrails, oversight frameworks, and observability that allow agents to operate safely at scale—with compliance and accountability built-in from day one.
                             </p>
+                            <a href="establish-governance.html" class="text-indigo-400 hover:text-indigo-300 text-sm font-medium inline-flex items-center gap-1 transition-colors">
+                                Learn More <i class="fas fa-arrow-right text-xs"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -270,106 +301,14 @@
                         <div class="text-6xl font-display font-bold text-indigo-500/30">4</div>
                         <div>
                             <h3 class="text-2xl font-bold mb-3 font-display">Navigate the Human Journey</h3>
-                            <p class="text-gray-400 text-lg leading-relaxed">
+                            <p class="text-gray-400 text-lg leading-relaxed mb-4">
                                 We help you communicate transparently, design transition support, create new apprenticeship models, and guide your workforce from executors to orchestrators with courage and empathy.
                             </p>
+                            <a href="navigate-human-journey.html" class="text-indigo-400 hover:text-indigo-300 text-sm font-medium inline-flex items-center gap-1 transition-colors">
+                                Learn More <i class="fas fa-arrow-right text-xs"></i>
+                            </a>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Shift Left, Swarm Right Section (NEW) -->
-    <section class="py-24 bg-gradient-to-b from-ai-card via-ai-dark to-ai-dark relative overflow-hidden">
-        <!-- Decoration -->
-        <div class="absolute inset-0 bg-hero-pattern opacity-50"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="max-w-4xl mx-auto text-center">
-                
-                <!-- Text Content -->
-                <div class="reveal">
-                    <h2 class="text-5xl md:text-7xl font-display font-bold leading-none mb-6">
-                        Shift Left.<br/>
-                        <span class="text-indigo-500">Swarm Right.</span>
-                    </h2>
-                    <h3 class="text-2xl text-white font-medium mb-8 font-display">
-                        Empower Owners, Automate Everything.
-                    </h3>
-                    <p class="text-gray-400 text-xl mb-8 leading-relaxed mx-auto max-w-2xl">
-                        We are the <span class="text-indigo-300 font-bold">anti-consultant</span>. No more waterfall woes or engineer bottlenecks.
-                        We turn Product Owners into maestros who conduct AI-orchestrated symphonies.
-                        Move from idea to deployment through vibe-driven ideation flowing seamlessly into production.
-                    </p>
-                    
-                    <!-- Metrics -->
-                    <div class="grid grid-cols-3 gap-6 pt-4 max-w-2xl mx-auto">
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-white font-display">70%</div>
-                            <div class="text-xs text-indigo-400 uppercase tracking-wider mt-1">Cycle Time Cut</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-white font-display">10x</div>
-                            <div class="text-xs text-indigo-400 uppercase tracking-wider mt-1">Prototyping Speed</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-white font-display">ROI</div>
-                            <div class="text-xs text-indigo-400 uppercase tracking-wider mt-1">Comprehensive</div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- From Napkin to Production Section (NEW) -->
-    <section class="py-24 bg-ai-card relative border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-5xl font-display font-bold mb-6">From Napkin to Production</h2>
-                <p class="text-gray-400 text-xl max-w-3xl mx-auto">
-                    Our methodology replaces the <span class="text-indigo-400 line-through decoration-2">waterfall of doom</span> with a continuous stream of value.
-                    We leverage "Vibe Coding" where intuition drives the spec, and agents drive the syntax.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Step 01 -->
-                <div class="p-6 rounded-2xl bg-indigo-900/10 border border-indigo-500/20 reveal hover:bg-indigo-900/20 transition-all hover:-translate-y-1">
-                    <div class="text-5xl font-display font-bold text-indigo-500/20 mb-4">01</div>
-                    <h3 class="text-xl font-bold text-white mb-3">Vibe & Ideate</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Business users describe the desired outcome using natural language and low-fidelity sketches. No PRDs, just intent.
-                    </p>
-                </div>
-
-                <!-- Step 02 -->
-                <div class="p-6 rounded-2xl bg-indigo-900/10 border border-indigo-500/20 reveal hover:bg-indigo-900/20 transition-all hover:-translate-y-1" style="transition-delay: 100ms;">
-                    <div class="text-5xl font-display font-bold text-indigo-500/20 mb-4">02</div>
-                    <h3 class="text-xl font-bold text-white mb-3">Spec Driven Development</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        The new method for iteratively prompting applications. We convert 'vibes' into rigorous specs and architecture definitions automatically.
-                    </p>
-                </div>
-
-                <!-- Step 03 -->
-                <div class="p-6 rounded-2xl bg-indigo-900/10 border border-indigo-500/20 reveal hover:bg-indigo-900/20 transition-all hover:-translate-y-1" style="transition-delay: 200ms;">
-                    <div class="text-5xl font-display font-bold text-indigo-500/20 mb-4">03</div>
-                    <h3 class="text-xl font-bold text-white mb-3">Agentic Dev Team</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Fleets of specialized agents (Frontend, Backend, QA, Security) instantiate to build the codebase in parallel.
-                    </p>
-                </div>
-
-                <!-- Step 04 -->
-                <div class="p-6 rounded-2xl bg-indigo-900/10 border border-indigo-500/20 reveal hover:bg-indigo-900/20 transition-all hover:-translate-y-1" style="transition-delay: 300ms;">
-                    <div class="text-5xl font-display font-bold text-indigo-500/20 mb-4">04</div>
-                    <h3 class="text-xl font-bold text-white mb-3">Shared Agentic Layers</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Agents automatically wire apps into shared services (Gateways, Identity) and adhere to Data Governance policies, ensuring compliance by design.
-                    </p>
                 </div>
             </div>
         </div>
