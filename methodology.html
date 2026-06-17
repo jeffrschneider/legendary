@@ -11,123 +11,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
-                    },
-                    colors: {
-                        ai: {
-                            dark: '#0B0C15',
-                            card: '#151725',
-                            accent: '#6366f1',
-                            glow: '#818cf8',
-                            text: '#cbd5e1'
-                        }
-                    },
-                    backgroundImage: {
-                        'hero-pattern': "radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.15) 0%, rgba(11, 12, 21, 0) 50%)",
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            background-color: #0B0C15;
-            color: white;
-        }
-        .glass-nav {
-            background: rgba(11, 12, 21, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .service-card {
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-color: #6366f1;
-            box-shadow: 0 10px 40px -10px rgba(99, 102, 241, 0.2);
-        }
-        .gradient-text {
-            background: linear-gradient(to right, #ffffff, #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .blob {
-            position: absolute;
-            filter: blur(80px);
-            z-index: -1;
-            opacity: 0.4;
-        }
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .dropdown:hover .dropdown-menu {
-            display: block;
-        }
-    </style>
+    <script src="theme.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="antialiased selection:bg-indigo-500 selection:text-white">
+<body class="antialiased selection:bg-indigo-500 selection:text-white" data-page="methodology">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass-nav">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <a href="index.html" class="flex-shrink-0 font-display font-bold text-2xl tracking-tighter">
-                    LEGENDARY<span class="text-indigo-500">.</span>
-                </a>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <div class="relative dropdown">
-                            <button class="text-gray-300 hover:text-white transition-colors text-sm font-medium flex items-center gap-1">
-                                Offerings <i class="fas fa-chevron-down text-xs"></i>
-                            </button>
-                            <div class="dropdown-menu hidden absolute left-0 mt-2 w-64 bg-ai-card border border-gray-700 rounded-lg shadow-xl py-2">
-                                <a href="design-target-state.html" class="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-700/50">Design the Target State</a>
-                                <a href="build-velocity-engine.html" class="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-700/50">Build Your Velocity Engine</a>
-                                <a href="establish-governance.html" class="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-700/50">Establish Governance</a>
-                                <a href="navigate-human-journey.html" class="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-700/50">Navigate the Human Journey</a>
-                            </div>
-                        </div>
-                        <a href="methodology.html" class="text-white transition-colors text-sm font-medium">Methodology</a>
-                        <a href="our-thinking.html" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Our Thinking</a>
-                        <a href="index.html#contact" class="bg-indigo-600 hover:bg-indigo-700 transition-colors text-white px-5 py-2 rounded-full text-sm font-medium ml-4">Book Consultation</a>
-                    </div>
-                </div>
-                <div class="-mr-2 flex md:hidden">
-                    <button type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Mobile Menu -->
-        <div class="hidden md:hidden bg-ai-card border-b border-gray-800" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <div class="px-3 py-2 text-xs uppercase text-gray-500 font-medium">Offerings</div>
-                <a href="design-target-state.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300">Design the Target State</a>
-                <a href="build-velocity-engine.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300">Build Your Velocity Engine</a>
-                <a href="establish-governance.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300">Establish Governance</a>
-                <a href="navigate-human-journey.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300">Navigate the Human Journey</a>
-                <div class="border-t border-gray-700 my-2"></div>
-                <a href="methodology.html" class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400">Methodology</a>
-                <a href="our-thinking.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300">Our Thinking</a>
-                <a href="index.html#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300">Book Consultation</a>
-            </div>
-        </div>
-    </nav>
+    <!-- Navigation (injected by site.js) -->
+    <div id="site-nav"></div>
 
     <!-- Hero Section: Shift Left, Swarm Right -->
     <section class="relative pt-32 pb-20 lg:pt-44 lg:pb-28 overflow-hidden">
@@ -319,33 +209,9 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-ai-dark border-t border-gray-800 py-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="font-display font-bold text-xl tracking-tighter mb-4 md:mb-0">
-                    LEGENDARY<span class="text-indigo-500">.</span>
-                </div>
-                <div class="flex space-x-6">
-                    <a href="index.html" class="text-gray-400 hover:text-white transition-colors text-sm">Home</a>
-                    <a href="methodology.html" class="text-gray-400 hover:text-white transition-colors text-sm">Methodology</a>
-                    <a href="index.html#contact" class="text-gray-400 hover:text-white transition-colors text-sm">Contact</a>
-                </div>
-            </div>
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
-                &copy; 2026 Legendary AI Consulting. All rights reserved.
-            </div>
-        </div>
-    </footer>
+    <!-- Footer (injected by site.js) -->
+    <div id="site-footer"></div>
 
-    <script>
-        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
-            });
-        }, observerOptions);
-        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-    </script>
+    <script src="site.js"></script>
 </body>
 </html>

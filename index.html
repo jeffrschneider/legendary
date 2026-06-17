@@ -11,124 +11,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
-                    },
-                    colors: {
-                        ai: {
-                            dark: '#0B0C15',
-                            card: '#151725',
-                            accent: '#6366f1', // Indigo
-                            glow: '#818cf8',
-                            text: '#cbd5e1'
-                        }
-                    },
-                    backgroundImage: {
-                        'hero-pattern': "radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.15) 0%, rgba(11, 12, 21, 0) 50%)",
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            background-color: #0B0C15;
-            color: white;
-        }
-        .glass-nav {
-            background: rgba(11, 12, 21, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .service-card {
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-color: #6366f1;
-            box-shadow: 0 10px 40px -10px rgba(99, 102, 241, 0.2);
-        }
-        .gradient-text {
-            background: linear-gradient(to right, #ffffff, #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .blob {
-            position: absolute;
-            filter: blur(80px);
-            z-index: -1;
-            opacity: 0.4;
-        }
-        /* Reveal on Scroll */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .dropdown:hover .dropdown-menu {
-            display: block;
-        }
-    </style>
+    <script src="theme.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="antialiased selection:bg-indigo-500 selection:text-white">
+<body class="antialiased selection:bg-indigo-500 selection:text-white" data-page="home">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass-nav">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex-shrink-0 font-display font-bold text-2xl tracking-tighter cursor-pointer" onclick="window.scrollTo(0,0)">
-                    LEGENDARY<span class="text-indigo-500">.</span>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <div class="relative dropdown">
-                            <button class="text-gray-300 hover:text-white transition-colors text-sm font-medium flex items-center gap-1">
-                                Offerings <i class="fas fa-chevron-down text-xs"></i>
-                            </button>
-                            <div class="dropdown-menu hidden absolute left-0 mt-2 w-64 bg-ai-card border border-gray-700 rounded-lg shadow-xl py-2">
-                                <a href="design-target-state.html" class="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-700/50">Design the Target State</a>
-                                <a href="build-velocity-engine.html" class="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-700/50">Build Your Velocity Engine</a>
-                                <a href="establish-governance.html" class="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-700/50">Establish Governance</a>
-                                <a href="navigate-human-journey.html" class="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-700/50">Navigate the Human Journey</a>
-                            </div>
-                        </div>
-                        <a href="methodology.html" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Methodology</a>
-                        <a href="our-thinking.html" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Our Thinking</a>
-                        <a href="#contact" class="bg-indigo-600 hover:bg-indigo-700 transition-colors text-white px-5 py-2 rounded-full text-sm font-medium ml-4">Book Consultation</a>
-                    </div>
-                </div>
-                <div class="-mr-2 flex md:hidden">
-                    <button type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Mobile Menu -->
-        <div class="hidden md:hidden bg-ai-card border-b border-gray-800" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <div class="px-3 py-2 text-xs uppercase text-gray-500 font-medium">Offerings</div>
-                <a href="design-target-state.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300">Design the Target State</a>
-                <a href="build-velocity-engine.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300">Build Your Velocity Engine</a>
-                <a href="establish-governance.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300">Establish Governance</a>
-                <a href="navigate-human-journey.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300">Navigate the Human Journey</a>
-                <div class="border-t border-gray-700 my-2"></div>
-                <a href="methodology.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300">Methodology</a>
-                <a href="our-thinking.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300">Our Thinking</a>
-                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400">Book Consultation</a>
-            </div>
-        </div>
-    </nav>
+    <!-- Navigation (injected by site.js) -->
+    <div id="site-nav"></div>
 
     <!-- Hero Section -->
     <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
@@ -240,76 +129,126 @@
         </div>
     </section>
 
-    <!-- Operationalize the Change Section -->
-    <section class="py-24 bg-ai-card/30 relative border-t border-gray-800">
+    <!-- Offerings Section -->
+    <section id="offerings" class="py-24 bg-ai-card/30 relative border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">Legendary Makes It Real.</h2>
-                <p class="text-ai-text text-xl max-w-3xl mx-auto">The Agentic Enterprise demands comprehensive transformation. New structures. Modern practices. A workforce ready for the future.</p>
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">Our Offerings</h2>
+                <p class="text-ai-text text-xl max-w-3xl mx-auto">Wherever you are on the journey, we meet you there, from building and running your first agents to transforming the entire enterprise.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Box 1: Design the Target State -->
-                <div class="service-card bg-ai-card p-8 rounded-2xl reveal group">
-                    <div class="flex items-start gap-6">
-                        <div class="text-6xl font-display font-bold text-indigo-500/30">1</div>
-                        <div>
-                            <h3 class="text-2xl font-bold mb-3 font-display">Design the Target State</h3>
-                            <p class="text-gray-400 text-lg leading-relaxed mb-4">
-                                We assess your current state, define the agentic operating model, and build the roadmap, reshaping culture, processes, and technology to achieve velocity at scale.
-                            </p>
-                            <a href="design-target-state.html" class="text-indigo-400 hover:text-indigo-300 text-sm font-medium inline-flex items-center gap-1 transition-colors">
-                                Learn More <i class="fas fa-arrow-right text-xs"></i>
-                            </a>
-                        </div>
+            <!-- Tier 1: For Every Business -->
+            <div class="mb-20">
+                <div class="text-center mb-10 reveal">
+                    <div class="inline-flex items-center px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 text-sm font-medium mb-4">
+                        <span class="flex h-2 w-2 rounded-full bg-cyan-400 mr-2"></span>
+                        Small &amp; Medium Enterprise
                     </div>
+                    <h3 class="text-2xl md:text-3xl font-display font-bold">For Every Business</h3>
+                    <p class="text-gray-400 text-lg mt-3 max-w-2xl mx-auto">Build agents that deliver real value, then keep them running. Practical, fast-ROI engagements for teams of any size.</p>
                 </div>
 
-                <!-- Box 2: Build Your Velocity Engine -->
-                <div class="service-card bg-ai-card p-8 rounded-2xl reveal group" style="transition-delay: 100ms;">
-                    <div class="flex items-start gap-6">
-                        <div class="text-6xl font-display font-bold text-indigo-500/30">2</div>
-                        <div>
-                            <h3 class="text-2xl font-bold mb-3 font-display">Build Your Velocity Engine</h3>
-                            <p class="text-gray-400 text-lg leading-relaxed mb-4">
-                                We stand up your Agentic Services Group: secure platforms, pre-approved models, agent catalogs, knowledge foundations, and the shared infrastructure that prevents bottlenecks.
-                            </p>
-                            <a href="build-velocity-engine.html" class="text-indigo-400 hover:text-indigo-300 text-sm font-medium inline-flex items-center gap-1 transition-colors">
-                                Learn More <i class="fas fa-arrow-right text-xs"></i>
-                            </a>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <!-- Agentic Development -->
+                    <div class="service-card bg-ai-card p-8 rounded-2xl reveal">
+                        <div class="w-14 h-14 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg mb-5">
+                            <i class="fas fa-code text-xl"></i>
                         </div>
+                        <h3 class="text-xl font-bold text-white mb-3 font-display">Agentic Development</h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            AI coding agents and the Shed &amp; Shift methodology transform how software is created, from initial design through deployment. We help teams identify which tasks to shed to agents and which to shift toward higher-value human oversight, elevating developers from code writers to system architects.
+                        </p>
+                    </div>
+
+                    <!-- Agentic Operations & Maintenance -->
+                    <div class="service-card bg-ai-card p-8 rounded-2xl reveal" style="transition-delay: 100ms;">
+                        <div class="w-14 h-14 bg-gradient-to-br from-teal-500 to-green-600 rounded-xl flex items-center justify-center text-white shadow-lg mb-5">
+                            <i class="fas fa-arrows-rotate text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3 font-display">Agentic Operations &amp; Maintenance</h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            Building an agent is only the beginning, keeping it healthy is the real work. We provide ongoing monitoring, evaluation, and tuning to keep your agents accurate, safe, and cost-effective as models, data, and your business change, plus rapid response when behavior drifts or something breaks.
+                        </p>
                     </div>
                 </div>
+            </div>
 
-                <!-- Box 3: Establish Governance -->
-                <div class="service-card bg-ai-card p-8 rounded-2xl reveal group" style="transition-delay: 200ms;">
-                    <div class="flex items-start gap-6">
-                        <div class="text-6xl font-display font-bold text-indigo-500/30">3</div>
-                        <div>
-                            <h3 class="text-2xl font-bold mb-3 font-display">Establish Governance</h3>
-                            <p class="text-gray-400 text-lg leading-relaxed mb-4">
-                                Design the guardrails, oversight frameworks, and observability that allow agents to operate safely at scale, with compliance and accountability built-in from day one.
-                            </p>
-                            <a href="establish-governance.html" class="text-indigo-400 hover:text-indigo-300 text-sm font-medium inline-flex items-center gap-1 transition-colors">
-                                Learn More <i class="fas fa-arrow-right text-xs"></i>
-                            </a>
-                        </div>
+            <!-- Tier 2: For Large Enterprise -->
+            <div>
+                <div class="text-center mb-10 reveal">
+                    <div class="inline-flex items-center px-4 py-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 text-sm font-medium mb-4">
+                        <span class="flex h-2 w-2 rounded-full bg-indigo-400 mr-2"></span>
+                        Transformation at Scale
                     </div>
+                    <h3 class="text-2xl md:text-3xl font-display font-bold">For Large Enterprise</h3>
+                    <p class="text-gray-400 text-lg mt-3 max-w-2xl mx-auto">Reshape the entire organization for the Agentic Era, with the strategy, infrastructure, and governance to operate at velocity.</p>
                 </div>
 
-                <!-- Box 4: Navigate the Human Journey -->
-                <div class="service-card bg-ai-card p-8 rounded-2xl reveal group" style="transition-delay: 300ms;">
-                    <div class="flex items-start gap-6">
-                        <div class="text-6xl font-display font-bold text-indigo-500/30">4</div>
-                        <div>
-                            <h3 class="text-2xl font-bold mb-3 font-display">Navigate the Human Journey</h3>
-                            <p class="text-gray-400 text-lg leading-relaxed mb-4">
-                                We help you communicate transparently, design transition support, create new apprenticeship models, and guide your workforce from executors to orchestrators with courage and empathy.
-                            </p>
-                            <a href="navigate-human-journey.html" class="text-indigo-400 hover:text-indigo-300 text-sm font-medium inline-flex items-center gap-1 transition-colors">
-                                Learn More <i class="fas fa-arrow-right text-xs"></i>
-                            </a>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- The Agentic Enterprise -->
+                    <div class="service-card bg-ai-card p-8 rounded-2xl reveal">
+                        <div class="w-14 h-14 bg-gradient-to-br from-red-500 to-orange-600 rounded-xl flex items-center justify-center text-white shadow-lg mb-5">
+                            <i class="fas fa-building text-xl"></i>
                         </div>
+                        <h3 class="text-xl font-bold text-white mb-3 font-display">The Agentic Enterprise</h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            A fundamental reimagining of how organizations operate when velocity determines survival. Built on four pillars: organizational speed as an existential necessity, human-agent partnerships as the new operating model, an Agentic Services Group as the velocity engine, and confronting workforce transformation with honesty.
+                        </p>
+                    </div>
+
+                    <!-- Running an Agentic Transformation Program -->
+                    <div class="service-card bg-ai-card p-8 rounded-2xl reveal" style="transition-delay: 100ms;">
+                        <div class="w-14 h-14 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center text-white shadow-lg mb-5">
+                            <i class="fas fa-project-diagram text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3 font-display">Running an Agentic Transformation Program</h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            A monumental shift that far exceeds an ERP implementation, a fundamental restructuring of work where autonomous agents reason, plan, and execute alongside human colleagues. We treat it as an enterprise-wide metamorphosis, with governance structures and change strategies designed for that scale.
+                        </p>
+                    </div>
+
+                    <!-- Establishing an Agent Service Group -->
+                    <div class="service-card bg-ai-card p-8 rounded-2xl reveal" style="transition-delay: 200ms;">
+                        <div class="w-14 h-14 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center text-white shadow-lg mb-5">
+                            <i class="fas fa-server text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3 font-display">Establishing an Agent Service Group</h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            The central operational authority that governs how autonomous systems are deployed across the enterprise, ensuring every agent is provisioned securely, architecturally consistent, and fully auditable before production. The guardrails that let business units innovate rapidly while maintaining oversight.
+                        </p>
+                    </div>
+
+                    <!-- Agentic Governance -->
+                    <div class="service-card bg-ai-card p-8 rounded-2xl reveal">
+                        <div class="w-14 h-14 bg-gradient-to-br from-rose-500 to-red-600 rounded-xl flex items-center justify-center text-white shadow-lg mb-5">
+                            <i class="fas fa-balance-scale text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3 font-display">Agentic Governance</h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            Traditional IT governance falls short when agents act autonomously, making decisions and executing transactions without direct human intervention. We build new frameworks that balance oversight with operational speed, keeping agents accountable while preserving the velocity that makes them valuable.
+                        </p>
+                    </div>
+
+                    <!-- Creating Your Agentic Architecture & Mesh -->
+                    <div class="service-card bg-ai-card p-8 rounded-2xl reveal" style="transition-delay: 100ms;">
+                        <div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center text-white shadow-lg mb-5">
+                            <i class="fas fa-network-wired text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3 font-display">Creating Your Agentic Architecture &amp; Mesh</h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            A reference architecture for building, deploying, and orchestrating agents at enterprise scale. A well-designed agentic mesh lets agents collaborate, share context, and coordinate complex multi-step workflows across boundaries, so capabilities scale far faster than ad-hoc implementations allow.
+                        </p>
+                    </div>
+
+                    <!-- Performing Agent and HAP Analysis -->
+                    <div class="service-card bg-ai-card p-8 rounded-2xl reveal" style="transition-delay: 200ms;">
+                        <div class="w-14 h-14 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-xl flex items-center justify-center text-white shadow-lg mb-5">
+                            <i class="fas fa-microscope text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3 font-display">Performing Agent and HAP Analysis</h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            A complete toolkit for understanding and optimizing Human-Agent Partnerships: Agentic Replica to map current work patterns, Agentic Reengineering to envision optimized future states, and artifacts that model how trust develops between humans and agents over time.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -336,13 +275,18 @@
                 <div>
                     <h4 class="text-white font-bold mb-6">Get in Touch</h4>
                     <form id="contactForm" class="space-y-4">
-                        <input type="email" required placeholder="Enter your email" class="w-full bg-ai-card border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-indigo-500 transition-colors">
-                        <textarea required placeholder="Tell us about your project" rows="3" class="w-full bg-ai-card border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-indigo-500 transition-colors"></textarea>
-                        <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-lg transition-colors w-full md:w-auto">
+                        <input type="email" name="email" required placeholder="Enter your email" class="w-full bg-ai-card border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-indigo-500 transition-colors">
+                        <textarea name="message" required placeholder="Tell us about your project" rows="3" class="w-full bg-ai-card border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-indigo-500 transition-colors"></textarea>
+                        <!-- Honeypot: hidden from humans, bots fill it and get silently dropped -->
+                        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
+                        <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-lg transition-colors w-full md:w-auto disabled:opacity-60 disabled:cursor-not-allowed">
                             Send Message
                         </button>
                         <div id="successMessage" class="hidden text-green-400 text-sm mt-2">
                             <i class="fas fa-check-circle mr-2"></i> Thank you! We'll be in touch shortly.
+                        </div>
+                        <div id="errorMessage" class="hidden text-red-400 text-sm mt-2">
+                            <i class="fas fa-exclamation-circle mr-2"></i> Something went wrong. Please try again or email us directly.
                         </div>
                     </form>
                 </div>
@@ -353,38 +297,6 @@
         </div>
     </footer>
 
-    <script>
-        // Simple Intersection Observer for scroll animations
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal').forEach((el) => {
-            observer.observe(el);
-        });
-
-        // Form handling
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const successMsg = document.getElementById('successMessage');
-            successMsg.classList.remove('hidden');
-            e.target.reset();
-            
-            // Hide message after 5 seconds
-            setTimeout(() => {
-                successMsg.classList.add('hidden');
-            }, 5000);
-        });
-    </script>
+    <script src="site.js"></script>
 </body>
 </html>

@@ -1,0 +1,13 @@
+{
+  "name": "legendary-contact-function",
+  "version": "1.0.0",
+  "description": "HTTP Cloud Function that handles the legendary.ai contact form.",
+  "main": "index.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@google-cloud/functions-framework": "^3.4.0",
+    "@sendgrid/mail": "^8.1.3"
+  }
+}
