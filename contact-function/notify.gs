@@ -25,13 +25,14 @@ function checkForNewSubmissions() {
     if (lastRow <= lastNotified) return; // nothing new
 
     var numRows = lastRow - lastNotified;
-    // Columns A-C: Timestamp, Email, Message
-    var rows = sheet.getRange(lastNotified + 1, 1, numRows, 3).getValues();
+    // Columns A-D: Timestamp (MT), Email, Message, Location
+    var rows = sheet.getRange(lastNotified + 1, 1, numRows, 4).getValues();
 
     rows.forEach(function (row) {
         var timestamp = row[0];
         var email = row[1];
         var message = row[2];
+        var location = row[3];
         if (!email && !message) return;
 
         MailApp.sendEmail({
@@ -40,7 +41,8 @@ function checkForNewSubmissions() {
             subject: 'New legendary.ai inquiry — ' + email,
             body: 'New contact form submission:\n\n' +
                   'Time: ' + timestamp + '\n' +
-                  'Email: ' + email + '\n\n' +
+                  'Email: ' + email + '\n' +
+                  'Location: ' + (location || 'unknown') + '\n\n' +
                   'Message:\n' + message + '\n',
         });
     });

@@ -2,7 +2,7 @@ const functions = require('@google-cloud/functions-framework');
 const { google } = require('googleapis');
 
 // Configuration via environment variables (set at deploy time).
-const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || '*';        // e.g. https://legendary.ai
+const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || '*';        // e.g. https://legendary.ai or *
 const SPREADSHEET_ID = process.env.SPREADSHEET_ID;              // from the Sheet's URL
 const SHEET_NAME = process.env.SHEET_NAME || 'Submissions';
 
@@ -14,6 +14,35 @@ const auth = new google.auth.GoogleAuth({
 const sheets = google.sheets('v4');
 
 const isEmail = (s) => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(s);
+
+// Format "now" as Mountain Time (America/Denver, DST-aware): "2026-06-20 08:38:21 MDT"
+function mountainTimestamp() {
+    const d = new Date();
+    const datePart = d.toLocaleString('sv-SE', { timeZone: 'America/Denver', hour12: false }); // 2026-06-20 08:38:21
+    const tz = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Denver', timeZoneName: 'short' })
+        .formatToParts(d).find((p) => p.type === 'timeZoneName').value; // MDT / MST
+    return `${datePart} ${tz}`;
+}
+
+// Resolve a client IP to "City, Region, Country" via ip-api.com (no key,
+// server-side friendly). Best-effort: returns '' on any failure so a
+// submission is never lost.
+async function geoLocation(ip) {
+    if (!ip) return '';
+    try {
+        const res = await fetch(
+            `http://ip-api.com/json/${encodeURIComponent(ip)}?fields=status,country,regionName,city`,
+            { signal: AbortSignal.timeout(4000) }
+        );
+        if (!res.ok) return '';
+        const j = await res.json();
+        if (j.status !== 'success') return '';
+        return [j.city, j.regionName, j.country].filter(Boolean).join(', ');
+    } catch (err) {
+        console.error('geo lookup failed:', err);
+        return '';
+    }
+}
 
 functions.http('contact', async (req, res) => {
     // --- CORS ---
@@ -52,24 +81,20 @@ functions.http('contact', async (req, res) => {
         return res.status(500).json({ error: 'Server is not configured.' });
     }
 
+    const clientIp = String(req.get('x-forwarded-for') || '').split(',')[0].trim();
+    const location = await geoLocation(clientIp);
+
     try {
         const client = await auth.getClient();
         await sheets.spreadsheets.values.append({
             auth: client,
             spreadsheetId: SPREADSHEET_ID,
-            range: `${SHEET_NAME}!A:E`,
-            // RAW (not USER_ENTERED) so a message starting with '=' can't be
-            // interpreted as a spreadsheet formula (CSV-injection safety).
+            range: `${SHEET_NAME}!A:D`,
+            // RAW so a message starting with '=' can't become a spreadsheet formula.
             valueInputOption: 'RAW',
             insertDataOption: 'INSERT_ROWS',
             requestBody: {
-                values: [[
-                    new Date().toISOString(),
-                    email,
-                    message,
-                    req.get('user-agent') || '',
-                    req.get('x-forwarded-for') || '',
-                ]],
+                values: [[mountainTimestamp(), email, message, location]],
             },
         });
         return res.status(200).json({ ok: true });
