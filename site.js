@@ -86,8 +86,7 @@
     // Contact form (index page only) — POSTs to the contact Cloud Function.
     const form = document.getElementById('contactForm');
     if (form) {
-        // TODO: replace with your deployed Cloud Function URL (printed by `gcloud functions deploy`).
-        const CONTACT_ENDPOINT = 'https://REGION-PROJECT.cloudfunctions.net/contact';
+        const CONTACT_ENDPOINT = 'https://us-central1-langbench-1528148150979.cloudfunctions.net/legendary-contact';
 
         const successMsg = document.getElementById('successMessage');
         const errorMsg = document.getElementById('errorMessage');

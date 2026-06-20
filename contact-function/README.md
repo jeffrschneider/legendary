@@ -1,51 +1,74 @@
 # Contact form Cloud Function
 
 HTTP-triggered Google Cloud Function (2nd gen, Node 20) that receives the
-contact form POST from the static site and emails it via SendGrid.
+contact-form POST from the static site and **appends each submission to a
+Google Sheet**. An hourly Apps Script trigger on the Sheet emails new rows
+(native `MailApp` — no SendGrid, no SMTP, no API keys).
 
-## One-time setup
+## Deployed configuration (live)
 
-1. **SendGrid** (free tier): create an account, verify a sender address or
-   domain, and create an API key (Mail Send permission).
+| | |
+|---|---|
+| Function | `legendary-contact` (gen2, nodejs20) |
+| Project | `langbench-1528148150979` |
+| Region | `us-central1` |
+| Endpoint | `https://us-central1-langbench-1528148150979.cloudfunctions.net/legendary-contact` |
+| Runtime service account | `68925516043-compute@developer.gserviceaccount.com` |
+| Sheet | "Legendary AI Leads" → tab `Submissions` (`SPREADSHEET_ID` env var) |
+| Env vars | `ALLOWED_ORIGIN=https://legendary.ai`, `SHEET_NAME=Submissions`, `SPREADSHEET_ID=…` |
 
-2. **Store the API key in Secret Manager** (don't put it in code):
-   ```sh
-   printf '%s' 'SG.your-key-here' | gcloud secrets create sendgrid-api-key --data-file=-
-   ```
+The endpoint is wired into `../site.js` (`CONTACT_ENDPOINT`).
 
-## Deploy
+## How it works
 
-From this directory:
+1. Browser POSTs `{email, message, _gotcha}` (JSON) to the function.
+2. The function validates, runs a honeypot spam check, and appends a row
+   (`Timestamp, Email, Message, User Agent, IP`) to the Sheet using its own
+   service account (Application Default Credentials — no keys). The Sheet is
+   shared with that service account as **Editor**.
+3. The Apps Script in `notify.gs` runs hourly and emails any new rows.
 
-```sh
-gcloud functions deploy contact \
-  --gen2 \
-  --runtime=nodejs20 \
-  --region=us-central1 \
-  --source=. \
-  --entry-point=contact \
-  --trigger-http \
-  --allow-unauthenticated \
-  --set-env-vars ALLOWED_ORIGIN=https://legendary.ai,TO_EMAIL=jeffrschneider@gmail.com,FROM_EMAIL=no-reply@legendary.ai \
-  --set-secrets SENDGRID_API_KEY=sendgrid-api-key:latest
-```
-
-The command prints the function URL (e.g.
-`https://contact-xxxxxxxx-uc.a.run.app`). Put that URL into
-`CONTACT_ENDPOINT` in `../site.js`.
-
-## Notes
-
-- `FROM_EMAIL` must be a sender/domain you verified in SendGrid, otherwise the
-  send is rejected.
-- `ALLOWED_ORIGIN` locks CORS to your site; use `*` only for local testing.
-- The function honors a `_gotcha` honeypot field for basic spam filtering.
-
-## Test locally
+## One-time setup (already done, for reference)
 
 ```sh
-npm install
-SENDGRID_API_KEY=SG.xxx FROM_EMAIL=you@verified.com TO_EMAIL=you@gmail.com \
-  npx functions-framework --target=contact
-# then POST to http://localhost:8080
+# Enable APIs
+gcloud services enable sheets.googleapis.com cloudfunctions.googleapis.com \
+  cloudbuild.googleapis.com run.googleapis.com artifactregistry.googleapis.com \
+  --project langbench-1528148150979
+
+# Deploy
+gcloud functions deploy legendary-contact \
+  --gen2 --runtime=nodejs20 --region=us-central1 \
+  --source=. --entry-point=contact --trigger-http --allow-unauthenticated \
+  --set-env-vars ALLOWED_ORIGIN=https://legendary.ai,SHEET_NAME=Submissions \
+  --project langbench-1528148150979
+
+# Point it at the Sheet (no rebuild)
+gcloud run services update legendary-contact --region us-central1 \
+  --project langbench-1528148150979 \
+  --update-env-vars SPREADSHEET_ID=<sheet-id>
 ```
+
+The Sheet must be **shared as Editor** with the runtime service account
+(`68925516043-compute@developer.gserviceaccount.com`). A service account on a
+consumer Google account has no Drive storage, so it can append to a shared
+sheet but cannot create or own one — create the Sheet from your own account.
+
+## Email notifier (`notify.gs`)
+
+In the Sheet: **Extensions → Apps Script**, paste `notify.gs`, then run
+`installTrigger` once and approve the permission prompt. It polls hourly
+(API writes don't fire `onEdit`/`onChange`) and emails new rows to the address
+in `NOTIFY_TO`.
+
+## Redeploy after code changes
+
+```sh
+gcloud functions deploy legendary-contact \
+  --gen2 --runtime=nodejs20 --region=us-central1 \
+  --source=. --entry-point=contact --trigger-http \
+  --project langbench-1528148150979
+```
+
+(Use `--update-env-vars` to change a single env var without wiping the others —
+never `--set-env-vars` on an update.)
