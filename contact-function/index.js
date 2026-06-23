@@ -59,6 +59,8 @@ functions.http('contact', async (req, res) => {
     }
 
     const body = req.body || {};
+    const name = String(body.name || '').trim().slice(0, 200);
+    const company = String(body.company || '').trim().slice(0, 200);
     const email = String(body.email || '').trim();
     const message = String(body.message || '').trim();
     const honeypot = String(body._gotcha || '').trim();
@@ -89,12 +91,12 @@ functions.http('contact', async (req, res) => {
         await sheets.spreadsheets.values.append({
             auth: client,
             spreadsheetId: SPREADSHEET_ID,
-            range: `${SHEET_NAME}!A:D`,
+            range: `${SHEET_NAME}!A:F`,
             // RAW so a message starting with '=' can't become a spreadsheet formula.
             valueInputOption: 'RAW',
             insertDataOption: 'INSERT_ROWS',
             requestBody: {
-                values: [[mountainTimestamp(), email, message, location]],
+                values: [[mountainTimestamp(), name, company, email, message, location]],
             },
         });
         return res.status(200).json({ ok: true });

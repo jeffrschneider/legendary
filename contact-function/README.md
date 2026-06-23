@@ -23,11 +23,11 @@ The endpoint is wired into `../site.js` (`CONTACT_ENDPOINT`).
 
 1. Browser POSTs `{email, message, _gotcha}` (JSON) to the function.
 2. The function validates, runs a honeypot spam check, and appends a row
-   (`Timestamp (Mountain Time), Email, Message, Location`) to the Sheet using
-   its own service account (Application Default Credentials — no keys). The
-   Sheet is shared with that service account as **Editor**. Location is derived
-   from the client IP via ip-api.com (city/region/country); the raw IP is not
-   stored.
+   (`Timestamp (Mountain Time), Full Name, Company, Email, Message, Location`)
+   to the Sheet using its own service account (Application Default Credentials —
+   no keys). The Sheet is shared with that service account as **Editor**.
+   Location is derived from the client IP via ip-api.com (city/region/country);
+   the raw IP is not stored.
 3. The Apps Script in `notify.gs` runs hourly and emails any new rows.
 
 ## One-time setup (already done, for reference)

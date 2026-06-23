@@ -97,10 +97,13 @@
             if (successMsg) successMsg.classList.add('hidden');
             if (errorMsg) errorMsg.classList.add('hidden');
 
+            const fd = new FormData(form);
             const payload = {
-                email: form.email ? form.email.value.trim() : '',
-                message: form.message ? form.message.value.trim() : '',
-                _gotcha: form._gotcha ? form._gotcha.value : '',
+                name: (fd.get('name') || '').trim(),
+                company: (fd.get('company') || '').trim(),
+                email: (fd.get('email') || '').trim(),
+                message: (fd.get('message') || '').trim(),
+                _gotcha: fd.get('_gotcha') || '',
             };
 
             const originalLabel = submitBtn ? submitBtn.textContent : '';
